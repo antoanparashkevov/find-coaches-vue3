@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <li>
     <h3>{{ fullName }}</h3>
     <h4>${{ rate }}/hour</h4>
     <div>
@@ -9,7 +9,7 @@
       <router-link :to='detailsCoachLink'>Details</router-link>
       <router-link :to='contactCoachLink'>Contact</router-link>
     </div>
-  </section>
+  </li>
 </template>
 
 <script>
