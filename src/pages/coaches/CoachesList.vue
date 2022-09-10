@@ -9,9 +9,14 @@
     </div>
     <div>
     <ul v-if='hasCoaches'>
-      <li v-for='coach in coaches' :key='coach.id'>
-        {{coach.firstName}}
-      </li>
+     <coach-item v-for='coach in coaches'
+                 :key='coach.id'
+                 :id='coach.id'
+                 :first-name='coach.firstName'
+                 :last-name='coach.lastName'
+                 :rate='coach.hourlyRate'
+                 :areas='coach.areas'
+     ></coach-item>
     </ul>
       <h3 v-else>No coaches found!</h3>
     </div>
@@ -19,7 +24,11 @@
 </template>
 
 <script>
+import CoachItem from '../../coaches/CoachItem';
 export default {
+  components:{
+    CoachItem
+  },
   name: 'CoachesList',
   computed:{
     coaches(){
