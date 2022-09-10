@@ -8,7 +8,7 @@ export default {
     return {
       coaches:[
         {
-          id: 1,
+          id: 'c1',
           firstName:'Antoan',
           lastName:'Parashkevov',
           areas:['frontend','career','backend'],
@@ -16,7 +16,7 @@ export default {
           hourlyRate:30
         },
         {
-          id: 2,
+          id: 'c2',
           firstName:'Nadia',
           lastName:'Dolashka',
           areas:['career'],
@@ -24,7 +24,7 @@ export default {
           hourlyRate:40
         },
         {
-          id: 3,
+          id: 'c3',
           firstName:'Svetlio',
           lastName:'Parashkevov',
           areas:['frontend','backend'],
