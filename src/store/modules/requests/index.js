@@ -2,11 +2,13 @@
 import actions from '../requests/actions';
 import mutations from '../requests/mutations';
 import getters from '../requests/getters';
-export default{
-  state(){
 
+export default {
+  namespaced:true,
+  state() {
+    return {};
   },
   mutations,
   getters,
   actions
-}
+};
