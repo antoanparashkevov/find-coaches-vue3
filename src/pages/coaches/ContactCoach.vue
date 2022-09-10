@@ -1,6 +1,6 @@
 <template>
 <section>
-  test
+  CONTACT A COACH
 </section>
 </template>
 

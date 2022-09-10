@@ -1,6 +1,6 @@
 <template>
   <section>
-    test
+   REGISTRATION
   </section>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <section>
-    test
+    NOT FOUND
   </section>
 </template>
 
