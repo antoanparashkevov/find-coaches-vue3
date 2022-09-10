@@ -11,7 +11,7 @@ export default {
           id: 1,
           firstName:'Antoan',
           lastName:'Parashkevov',
-          areas:['frontend','career'],
+          areas:['frontend','career','backend'],
           description:'Some description 1',
           hourlyRate:30
         },
@@ -22,7 +22,15 @@ export default {
           areas:['career'],
           description:'Some description 2',
           hourlyRate:40
-        }
+        },
+        {
+          id: 3,
+          firstName:'Svetlio',
+          lastName:'Parashkevov',
+          areas:['frontend','backend'],
+          description:'Some description 3',
+          hourlyRate:50
+        },
       ]
     }
   },
