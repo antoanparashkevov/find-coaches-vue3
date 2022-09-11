@@ -48,11 +48,16 @@ export default {
 </script>
 
 <style scoped>
-
-h2,.filter-option{
-  margin: 1rem;
+h2{
+  margin: 0.5rem 0;
 }
-label{
-  margin: 0 0 0 0.5rem;
+.filter-option{
+  margin:1rem;
+}
+label,input{
+  vertical-align: middle;
+}
+.filter-option label{
+  margin-left: 0.25rem;
 }
 </style>
