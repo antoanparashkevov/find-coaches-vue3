@@ -6,7 +6,7 @@
     <section>
       <div class='controls'>
         <base-button mode='outline'>Refresh</base-button>
-        <base-button link mode='flat' to='/register'>Register</base-button>
+        <base-button link v-if='!isCoach' mode='flat' to='/register'>Register</base-button>
       </div>
       <div>
         <ul v-if='hasCoaches'>
@@ -52,6 +52,9 @@ export default {
     }
   },
   computed: {
+    isCoach(){
+      return this.$store.getters['coaches/isCoach'];
+    },
     coaches() {
       const allCoaches = this.$store.getters['coaches/coaches'];//an array
       //this will return new array with filtered coaches.

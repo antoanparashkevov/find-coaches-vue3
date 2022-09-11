@@ -3,7 +3,7 @@ export default {
     //payload is a data that is coming from a mutation
     //with context, we can commit this mutation
     const coachData = {
-      id:'c3',
+      id:'c4',
       firstName:payload.first,
       lastName:payload.last,
       areas:payload.areas,

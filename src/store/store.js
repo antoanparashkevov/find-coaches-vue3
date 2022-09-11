@@ -7,6 +7,17 @@ const store = createStore({
   modules:{
     coaches:coachesModule,
     requests:requestModule
+  },
+  //hardcoded until we have HTTP requests
+  state(){
+    return {
+      userId:'c4'
+    }
+  },
+  getters:{
+    userId(state){
+      return state.userId;
+    }
   }
 })
 
