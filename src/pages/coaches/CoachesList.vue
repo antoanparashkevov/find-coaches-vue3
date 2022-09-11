@@ -1,9 +1,7 @@
 <template>
-  <base-card>
-    <section>
-      FILTER
-    </section>
-  </base-card>
+  <section>
+    <filter-coach @change-areas='setFilter'></filter-coach>
+  </section>
   <base-card>
     <section>
       <div class='controls'>
@@ -29,22 +27,50 @@
 
 <script>
 import CoachItem from '../../coaches/CoachItem';
+import FilterCoach from '../../coaches/FilterCoach';
 import BaseButton from '../../ui/BaseButton';
 
 export default {
+  name: 'CoachesList',
   components: {
     BaseButton,
-    CoachItem
+    CoachItem,
+    FilterCoach
   },
-  name: 'CoachesList',
+  data() {
+    return {
+      activeFilters: {
+        frontend: true,
+        backend: true,
+        career: true
+      }
+    };
+  },
+  methods: {
+    setFilter(updatedFilters) {
+      this.activeFilters = updatedFilters;
+    }
+  },
   computed: {
     coaches() {
-      return this.$store.getters['coaches/coaches'];
+      const allCoaches = this.$store.getters['coaches/coaches'];//an array
+      //this will return new array with filtered coaches.
+      return allCoaches.filter((coach) => {
+        if (coach.areas.includes('frontend') && this.activeFilters.frontend) {
+          return true;
+        }
+        if (coach.areas.includes('backend') && this.activeFilters.backend) {
+          return true;
+        }
+        return coach.areas.includes('career') && this.activeFilters.career;
+
+      });
     },
     hasCoaches() {
       return this.$store.getters['coaches/hasCoaches'];
     }
   }
+
 };
 </script>
 
