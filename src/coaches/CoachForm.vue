@@ -57,7 +57,8 @@ export default {
         rate:this.rate,
         areas:this.areas,
       }
-      console.log(getFormData)
+      // console.log(getFormData)
+      this.$emit('save-data',getFormData)
     }
   }
 };
