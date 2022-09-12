@@ -55,10 +55,10 @@ export default {
         email: this.email.val,
         message: this.message.val
       };
-      this.$store.dispatch('requests/addRequest',
-        formData);
+      this.$store.dispatch('requests/addRequest', formData);
       this.$router.replace('/coaches');
       console.log(formData);
+      console.log(this.$store.getters['requests/requests'])
     }
   }
 };
