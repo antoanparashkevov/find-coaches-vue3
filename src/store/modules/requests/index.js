@@ -6,7 +6,9 @@ import getters from '../requests/getters';
 export default {
   namespaced:true,
   state() {
-    return {};
+    return {
+      requests:[]
+    };
   },
   mutations,
   getters,
