@@ -41,7 +41,10 @@ export default {
       return this.selectedCoach.firstName + ' ' + this.selectedCoach.lastName;
     },
     contactCoachLink() {
-      return this.$route.path + '/' + this.id + '/contact';
+      if(this.$route.path.includes('contact')){
+        return this.$route.path
+      }
+      return this.$route.path + '/contact';
     }
   },
   data() {

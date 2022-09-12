@@ -13,7 +13,7 @@ export default {
   props: {
     to: {
       type: String,
-      required: true,
+      required: false,
       default: '/'
     },
     //by default it should be button, not a router link
