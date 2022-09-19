@@ -18,7 +18,7 @@
   <section>
     <base-card>
       <base-badge v-for='area in areas' :key='area' :type='area' :title='area'></base-badge>
-      {{description}}
+     <p>{{description}}</p>
     </base-card>
   </section>
 </template>
@@ -57,7 +57,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-
-</style>
