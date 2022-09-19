@@ -5,14 +5,14 @@
   <base-card>
     <section>
       <div class='controls'>
-        <base-button mode='outline'>Refresh</base-button>
+        <base-button mode='outline' @click='loadCoaches'>Refresh</base-button>
         <base-button link v-if='!isCoach' to='/register'>Register as a Coach</base-button>
       </div>
       <div>
         <ul v-if='hasCoaches'>
           <coach-item v-for='coach in coaches'
-                      :key='coach.id'
-                      :id='coach.id'
+                      :key='coach.objectId'
+                      :id='coach.objectId'
                       :first-name='coach.firstName'
                       :last-name='coach.lastName'
                       :rate='coach.hourlyRate'
@@ -49,7 +49,13 @@ export default {
   methods: {
     setFilter(updatedFilters) {
       this.activeFilters = updatedFilters;
+    },
+    loadCoaches(){
+      this.$store.dispatch('coaches/loadCoaches')
     }
+  },
+  created(){
+    this.loadCoaches()
   },
   computed: {
     isCoach(){

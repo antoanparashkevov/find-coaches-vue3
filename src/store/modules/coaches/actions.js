@@ -22,6 +22,8 @@ export default {
     const responseData = await response.json()
 
     const userId = responseData.objectId
+    context.rootState.userId = userId;
+
     console.log(userId)
 
     if(response.ok === false){
@@ -34,11 +36,21 @@ export default {
       ...coachData,
       id:userId
     })
+  },
+  async loadCoaches(context){
+    const response = await fetch('https://parseapi.back4app.com/classes/coaches',{
+      method: 'GET',
+      headers:{
+          'X-Parse-Application-Id': '63u3mbmETZ0kesrnNGo1XTas8yKa8HdbqYdbj2sf',
+          'X-Parse-REST-API-Key': 'oU9VIRLkWZlFbxozm4ZcY13n1tCOnQY2usqgaPSi',
+      }
+    })
+    const responseData = await response.json();
+    console.log(responseData.results)
+
+
+
+    context.commit('setCoaches',responseData.results)
   }
 }
-//           id: 'c1',
-//           firstName:'Antoan',
-//           lastName:'Parashkevov',
-//           areas:['frontend','career','backend'],
-//           description:'Some description 1',
-//           hourlyRate:30
+
