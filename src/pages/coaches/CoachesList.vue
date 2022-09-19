@@ -6,7 +6,7 @@
     <section>
       <div class='controls'>
         <base-button mode='outline'>Refresh</base-button>
-        <base-button link v-if='!isCoach' mode='flat' to='/register'>Register</base-button>
+        <base-button link v-if='!isCoach' to='/register'>Register as a Coach</base-button>
       </div>
       <div>
         <ul v-if='hasCoaches'>
