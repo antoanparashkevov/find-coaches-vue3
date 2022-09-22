@@ -12,11 +12,9 @@ export default {
     const responseData = await response.json()
     
     if(response.ok === false){
-      console.log(responseData)
       //TODO error handling
+      throw new Error(responseData.error.message || 'Failed to authenticate. Please try again later!')
     }
-    console.log(responseData)
-    
     context.commit('setAuthentication', {
       token: responseData.idToken,
       id: responseData.localId,

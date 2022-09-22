@@ -30,7 +30,8 @@ export default {
         isValid: true
       },
       formIsValid:true,
-      mode: 'login'
+      mode: 'login',
+      error: null
     }
   },
   methods:{
@@ -38,7 +39,7 @@ export default {
       if(this.email.val === '' || this.email.val.includes('@') === false){
         this.email.isValid = false;
         this.formIsValid= false
-      }if(this.password.val === '' || this.password.val.length<6){
+      }if(this.password.val === '' || this.password.val.length < 6){
         this.password.isValid = false;
         this.formIsValid= false
       }
@@ -56,7 +57,12 @@ export default {
       if(this.mode === 'login'){
         //TODO http request for login
       } else{
-        this.$store.dispatch('auth/signup', authData)
+        try{
+          this.$store.dispatch('auth/signup', authData)
+        }catch (error){
+          this.error = error
+          console.log(this.error)
+        }
       }
     },
     switchAuthMode(){
