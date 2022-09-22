@@ -57,8 +57,6 @@ export default {
       };
       this.$store.dispatch('requests/addRequest', formData);
       this.$router.replace('/coaches');
-      console.log(formData);
-      console.log(this.$store.getters['requests/requests'])
     }
   }
 };

@@ -81,7 +81,6 @@ export default {
     },
     coaches() {
       const allCoaches = this.$store.getters['coaches/coaches'];//an array
-      console.log(allCoaches)
       //this will return new array with filtered coaches.
       return allCoaches.filter((coach) => {
         if (coach.areas.includes('frontend') && this.activeFilters.frontend) {
