@@ -10,6 +10,7 @@ import store from './store/store';
 import BaseButton from './ui/BaseButton';
 import BaseCard from './ui/BaseCard';
 import BaseBadge from './ui/BaseBadge';
+import BaseSpinner from './ui/BaseSpinner'
 
 const app = createApp(App);
 
@@ -19,5 +20,6 @@ app.use(store);
 app.component('base-card',BaseCard);
 app.component('base-badge',BaseBadge);
 app.component('base-button',BaseButton);
+app.component('base-spinner', BaseSpinner);
 
 app.mount('#app');
