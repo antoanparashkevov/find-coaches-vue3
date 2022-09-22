@@ -45,8 +45,14 @@ export default {
           'X-Parse-REST-API-Key': 'oU9VIRLkWZlFbxozm4ZcY13n1tCOnQY2usqgaPSi',
       }
     })
+   
     const responseData = await response.json();
-    console.log(responseData.results)
+    // console.log(responseData.results)
+    
+    if(!response.ok){
+      //{code: 1, message: 'Internal server error.'}
+      throw new Error(responseData.message || 'Something went wrong!');
+    }
 
 
 

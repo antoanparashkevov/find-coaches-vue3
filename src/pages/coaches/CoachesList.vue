@@ -1,4 +1,7 @@
 <template>
+  <base-dialog :show='!!error' @close='handleError' title='An error occurred!'>
+    <p>{{error}}</p>
+  </base-dialog>
   <section>
     <filter-coach @change-areas='setFilter'></filter-coach>
   </section>
@@ -42,6 +45,7 @@ export default {
   },
   data() {
     return {
+      error: null,
       isLoading: false,
       activeFilters: {
         frontend: true,
@@ -56,8 +60,16 @@ export default {
     },
     async loadCoaches(){
       this.isLoading = true
-     await this.$store.dispatch('coaches/loadCoaches')
+      try{
+       await this.$store.dispatch('coaches/loadCoaches')
+     }
+     catch (error){
+       this.error = error;
+     }
       this.isLoading = false;
+    },
+    handleError(){
+      this.error = null;
     }
   },
   created(){

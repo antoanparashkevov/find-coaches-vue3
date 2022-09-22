@@ -10,7 +10,7 @@
     <section>
       <slot></slot>
     </section>
-    <menu v-if='!fixed'>
+    <menu>
       <slot name='actions'>
         <base-button mode='outline' @click='tryClose'>Close</base-button>
       </slot>
@@ -33,17 +33,9 @@ export default {
       default: 'Something went wrong',
       required: true,
     },
-    fixed: {
-      type: Boolean,
-      default: false,
-      required: false
-    }
   },
   methods: {
     tryClose(){
-      if(this.fixed === false){
-        return;
-      }
       this.$emit('close')
     }
   }
@@ -86,6 +78,7 @@ header h2 {
 }
 section {
   padding: 1rem;
+  font-weight: bold;
 }
 menu {
   padding: 1rem;
