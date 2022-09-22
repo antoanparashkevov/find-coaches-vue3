@@ -21,7 +21,11 @@ export default {
     }
     context.commit('registerCoach', responseData)
   },
-  async loadCoaches(context){
+  async loadCoaches(context, payload){
+    //if these two properties are falsy
+    if(!payload.forceRefresh && !context.getters.shouldUpdate){
+      return;//not fetching the data
+    }
     //Get request to the backend
     const response = await fetch('https://find-a-coach-4d753-default-rtdb.firebaseio.com/coaches.json');
    
@@ -47,6 +51,7 @@ export default {
     }
 
     context.commit('setCoaches',coaches)
+    context.commit('setLastTimestamp');
   }
 }
 
