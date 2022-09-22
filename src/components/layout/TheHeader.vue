@@ -14,6 +14,9 @@
         <li>
           <router-link v-if='!isAuthenticated' to='/auth'>Login</router-link>
         </li>
+        <li>
+          <base-button v-if='isAuthenticated' @click='logout'>Logout</base-button>
+        </li>
       </ul>
     </nav>
   </header>
@@ -25,6 +28,12 @@ export default {
   computed:{
     isAuthenticated(){
       return this.$store.getters['auth/isAuthenticated']
+    }
+  },
+  methods:{
+    logout(){
+      this.$store.dispatch('auth/logout');
+      this.$router.replace('/coaches');
     }
   }
 };

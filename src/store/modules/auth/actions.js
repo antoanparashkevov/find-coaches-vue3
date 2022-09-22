@@ -23,5 +23,12 @@ export default {
       id: responseData.localId,
       expires: responseData.expiresIn
     })
+  },
+  logout(context){
+    context.commit('setAuthentication', {
+      token: null,
+      id: null,
+      expires: null
+      })
   }
 };
