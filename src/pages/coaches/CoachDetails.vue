@@ -7,18 +7,18 @@
   </section>
   <section>
     <base-card>
+      <base-badge v-for='area in areas' :key='area' :type='area' :title='area'></base-badge>
+      <p>{{description}}</p>
+    </base-card>
+  </section>
+  <section>
+    <base-card>
      <header>
        <h2>Interested? Reach them out!</h2>
        <base-button link :to='contactCoachLink'>Contact</base-button>
      </header>
 <!--      for contact page... -->
       <router-view></router-view>
-    </base-card>
-  </section>
-  <section>
-    <base-card>
-      <base-badge v-for='area in areas' :key='area' :type='area' :title='area'></base-badge>
-     <p>{{description}}</p>
     </base-card>
   </section>
 </template>
