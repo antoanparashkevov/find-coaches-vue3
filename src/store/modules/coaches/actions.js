@@ -1,9 +1,8 @@
 export default {
   async registerCoach(context,payload){
-    const userId = context.rootState.userId
+    const userId = context.rootState.userId;
     //payload is a data that is coming from a mutation
     //with context, we can commit this mutation
-    
     const coachData = {
       firstName:payload.first,
       lastName:payload.last,
@@ -17,18 +16,16 @@ export default {
     })
 
     const responseData = await response.json()
-    console.log(responseData);
-    
     if(response.ok === false){
       //TODO
     }
     context.commit('registerCoach', responseData)
   },
   async loadCoaches(context){
-    const response = await fetch('https://find-a-coach-4d753-default-rtdb.firebaseio.com/coaches.json')
+    //Get request to the backend
+    const response = await fetch('https://find-a-coach-4d753-default-rtdb.firebaseio.com/coaches.json');
    
     const responseData = await response.json();
-    console.log(responseData)
     
     if(!response.ok){
       //{code: 1, message: 'Internal server error.'}
@@ -48,7 +45,6 @@ export default {
       }
       coaches.push(coach)
     }
-    console.log(coaches)
 
     context.commit('setCoaches',coaches)
   }
