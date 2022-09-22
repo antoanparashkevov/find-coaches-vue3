@@ -14,7 +14,7 @@ export default {
     to: {
       type: String,
       required: false,
-      default: '/'
+      default: '/coaches'
     },
     //by default it should be button, not a router link
     link: {

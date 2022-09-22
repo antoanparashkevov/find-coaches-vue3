@@ -118,6 +118,10 @@ export default {
 </script>
 
 <style scoped>
+form {
+  margin: 1rem;
+  padding: 1rem;
+}
 .form-control{
   margin:0.5rem 0;
 }
