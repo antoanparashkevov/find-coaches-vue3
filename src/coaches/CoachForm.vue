@@ -72,7 +72,11 @@ export default {
   },
   methods: {
     clearValidity(input){
-      this[input].isValid = true;
+      if(this[input].val!=='' && typeof this[input].val === 'string'){
+        this[input].isValid = true;
+      }else if(typeof this[input].val === 'number' && this[input].val !== null){
+        this[input].isValid = true;
+      }
     },
     validateForm(){
       if(this.firstName.val === ''){
@@ -93,9 +97,10 @@ export default {
       }
     },
     setData() {
+      this.formIsValid = true;
       this.validateForm();
 
-      if(!this.formIsValid){
+      if(this.formIsValid === false){
         return;
       }
       const getFormData = {
