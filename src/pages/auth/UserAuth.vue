@@ -10,8 +10,8 @@
         <input type='password' id='password' v-model.trim='password.val'>
       </div>
       <p class='error' v-if='formIsValid === false'>Please enter a valid credentials</p>
-      <base-button>Login</base-button>
-      <base-button link mode='flat'>Sign up instead</base-button>
+      <base-button>{{ submitButtonCaption }}</base-button>
+      <base-button type='button' mode='flat' @click='switchAuthMode'>{{ switchModeCaption }}</base-button>
     </form>
   </base-card>
 </template>
@@ -29,7 +29,8 @@ export default {
         val: '',
         isValid: true
       },
-      formIsValid:true
+      formIsValid:true,
+      mode: 'login'
     }
   },
   methods:{
@@ -49,6 +50,29 @@ export default {
       }
       
       //TODO http requests.. for login and register
+    },
+    switchAuthMode(){
+      if(this.mode === 'login'){
+        this.mode = 'signup'
+      }else{
+        this.mode = 'login'
+      }
+    }
+  },
+  computed:{
+    submitButtonCaption(){
+      if(this.mode === 'login'){
+        return 'Login'
+      }else{
+        return 'Signup'
+      }
+    },
+    switchModeCaption(){
+      if(this.mode === 'login'){
+        return 'Signup instead'
+      }else {
+        return 'Login instead'
+      }
     }
   }
 };
