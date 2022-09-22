@@ -3,6 +3,7 @@ export default {
     state.coaches.push(payload);
   },
   setCoaches(state,payload){
-    state.coaches = payload
+    //We assume that the payload is all fetched coaches from the backend
+    state.coaches = payload;
   }
 }
