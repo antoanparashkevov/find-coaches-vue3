@@ -1,6 +1,6 @@
 export default {
   requests(state,_,_2,rootGetters){
-    const coachId = rootGetters.userId;
+    const coachId = rootGetters['auth/userId'];
     //will return new filtered array
     return state.requests.filter(request=>request.coachId === coachId);
   },

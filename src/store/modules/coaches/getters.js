@@ -9,7 +9,7 @@ export default {
   
   isCoach(_,getters,_2,rootGetters){
     const coaches = getters.coaches;
-    const userId = rootGetters.userId;
+    const userId = rootGetters['auth/userId'];
     //predicate function that returns true/false
     return coaches.some(coach=>coach.coachId === userId)
   },
