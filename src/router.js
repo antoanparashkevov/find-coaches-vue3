@@ -6,6 +6,7 @@ import CoachesList from '@/pages/coaches/CoachesList';
 import ContactCoach from '@/pages/coaches/ContactCoach';
 import CoachRegistration from '@/pages/requests/CoachRegistration';
 import RequestsReceived from '@/pages/requests/RequestsReceived';
+import UserAuth from '@/pages/auth/UserAuth';
 import notFound from '@/pages/notFound';
 
 const router = createRouter({
@@ -22,6 +23,7 @@ const router = createRouter({
     },
     { path: '/requests', component: RequestsReceived },
     { path: '/register', component: CoachRegistration },
+    { path: '/auth', component: UserAuth },
     { path: '/notFound(.*)', component: notFound }
   ]
 });
