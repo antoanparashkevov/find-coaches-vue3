@@ -72,6 +72,7 @@ export default {
             apiKey:this.APIkey,
             isLogin:true
           })
+          this.$router.replace('/coaches')
         } else{
           await this.$store.dispatch('auth/auth', {
             email: this.email.val,
