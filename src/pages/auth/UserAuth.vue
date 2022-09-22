@@ -51,8 +51,8 @@ export default {
         return;
       }
       const authData = {
-        email: this.email,
-        password: this.password
+        email: this.email.val,
+        password: this.password.val
       }
       if(this.mode === 'login'){
         //TODO http request for login
