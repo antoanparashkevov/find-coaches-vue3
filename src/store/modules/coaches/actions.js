@@ -22,34 +22,35 @@ export default {
     if(response.ok === false){
       //TODO
     }
-
-
-
-    context.commit('registerCoach',{
-      ...coachData,
-      id:userId
-    })
+    context.commit('registerCoach', responseData)
   },
   async loadCoaches(context){
-    const response = await fetch('https://parseapi.back4app.com/classes/coaches',{
-      method: 'GET',
-      headers:{
-          'X-Parse-Application-Id': '63u3mbmETZ0kesrnNGo1XTas8yKa8HdbqYdbj2sf',
-          'X-Parse-REST-API-Key': 'oU9VIRLkWZlFbxozm4ZcY13n1tCOnQY2usqgaPSi',
-      }
-    })
+    const response = await fetch('https://find-a-coach-4d753-default-rtdb.firebaseio.com/coaches.json')
    
     const responseData = await response.json();
-    // console.log(responseData.results)
+    console.log(responseData)
     
     if(!response.ok){
       //{code: 1, message: 'Internal server error.'}
       throw new Error(responseData.message || 'Something went wrong!');
     }
+  
+    const coaches = [];
+    
+    for(const coachId in responseData){
+      const coach = {
+        coachId:coachId,
+        firstName:responseData[coachId].firstName,
+        lastName:responseData[coachId].lastName,
+        areas:responseData[coachId].areas,
+        description:responseData[coachId].description,
+        hourlyRate:responseData[coachId].hourlyRate,
+      }
+      coaches.push(coach)
+    }
+    console.log(coaches)
 
-
-
-    context.commit('setCoaches',responseData.results)
+    context.commit('setCoaches',coaches)
   }
 }
 
