@@ -33,7 +33,9 @@ export default {
   },
   methods: {
     clearInvalidClass(input) {
-      this[input].isValid = true;
+      if(this[input].val !== ''){
+        this[input].isValid = true;
+      }
     },
     validateForm() {
       if (this.email.val === '' || this.email.val.includes('@') === false) {
@@ -46,6 +48,7 @@ export default {
       }
     },
     submitForm() {
+      this.formIsValid = true;
       this.validateForm();
       if (this.formIsValid === false) {
         return;
