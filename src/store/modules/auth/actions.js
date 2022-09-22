@@ -13,7 +13,7 @@ export default {
     
     if(response.ok === false){
       //TODO error handling
-      throw new Error(responseData.error.message || 'Failed to authenticate. Please try again later!')
+      throw new Error(responseData.message || 'Failed to authenticate. Please try again later!')
     }
     context.commit('setAuthentication', {
       token: responseData.idToken,

@@ -1,4 +1,11 @@
 <template>
+  <div>
+    <base-dialog :show='!!error' title='Failed to authenticate' @close='handleError'>
+      <p>{{error}}</p>
+    </base-dialog>
+    <base-dialog fixed :show='isLoading' title='Loading...'>
+      <base-spinner></base-spinner>
+    </base-dialog>
   <base-card>
     <form @submit.prevent='submitForm'>
       <div class='form-control' :class='{invalid:email.isValid === false}'>
@@ -14,6 +21,7 @@
       <base-button type='button' mode='flat' @click='switchAuthMode'>{{ switchModeCaption }}</base-button>
     </form>
   </base-card>
+  </div>
 </template>
 
 <script>
@@ -31,7 +39,8 @@ export default {
       },
       formIsValid:true,
       mode: 'login',
-      error: null
+      error: null,
+      isLoading: false,
     }
   },
   methods:{
@@ -44,7 +53,7 @@ export default {
         this.formIsValid= false
       }
     },
-    submitForm(){
+   async submitForm(){
       this.formIsValid = true;
       this.validateForm()
       if(this.formIsValid === false){
@@ -54,16 +63,17 @@ export default {
         email: this.email.val,
         password: this.password.val
       }
-      if(this.mode === 'login'){
-        //TODO http request for login
-      } else{
-        try{
-          this.$store.dispatch('auth/signup', authData)
-        }catch (error){
-          this.error = error
-          console.log(this.error)
+      this.isLoading = true;
+      try{
+        if(this.mode === 'login'){
+          //TODO http request for login
+        } else{
+          await this.$store.dispatch('auth/signup', authData)
         }
+      }catch (error){
+        this.error = (error.message || 'Due to internal server error, you can\t authenticate now!')
       }
+      this.isLoading = false;
     },
     switchAuthMode(){
       if(this.mode === 'login'){
@@ -71,6 +81,9 @@ export default {
       }else{
         this.mode = 'login'
       }
+    },
+    handleError(){
+      this.error = null;
     }
   },
   computed:{
