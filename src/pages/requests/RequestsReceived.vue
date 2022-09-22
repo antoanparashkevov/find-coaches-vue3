@@ -6,7 +6,7 @@
     <div>
       <ul v-if='hasRequests'>
         <request-item v-for='req in requestsList'
-                      :key='req.id'
+                      :key='req.coachId'
                       :email='req.email'
                       :message='req.message'></request-item>
       </ul>
@@ -29,6 +29,14 @@ export default {
     hasRequests() {
       return this.$store.getters['requests/hasRequests'];
     }
+  },
+  methods:{
+    loadRequests(){
+      this.$store.dispatch('requests/loadRequests')
+    }
+  },
+  created(){
+    this.loadRequests()
   }
 };
 </script>
