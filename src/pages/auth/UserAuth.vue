@@ -52,10 +52,11 @@ export default {
         email: this.email,
         password: this.password
       }
-      
-      this.$store.dispatch('auth/signup', authData)
-      
-      //TODO http requests.. for login and register
+      if(this.mode === 'login'){
+        //TODO http request for login
+      } else{
+        this.$store.dispatch('auth/signup', authData)
+      }
     },
     switchAuthMode(){
       if(this.mode === 'login'){
