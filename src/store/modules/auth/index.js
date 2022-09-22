@@ -7,7 +7,9 @@ export default {
   namespaced:true,
   state(){
     return {
-      userId:'c4'
+      userId:null,
+      idToken:null,
+      expiresIn:null,
     }
   },
   mutations,

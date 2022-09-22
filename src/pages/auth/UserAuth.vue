@@ -48,6 +48,12 @@ export default {
       if(this.formIsValid === false){
         return;
       }
+      const authData = {
+        email: this.email,
+        password: this.password
+      }
+      
+      this.$store.dispatch('auth/signup', authData)
       
       //TODO http requests.. for login and register
     },
