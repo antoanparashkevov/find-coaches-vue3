@@ -1,7 +1,9 @@
 export default {
   async registerCoach(context,payload){
+    const userId = context.rootState.userId
     //payload is a data that is coming from a mutation
     //with context, we can commit this mutation
+    
     const coachData = {
       firstName:payload.first,
       lastName:payload.last,
@@ -9,23 +11,14 @@ export default {
       description:payload.desc,
       hourlyRate:payload.rate,
     }
-    const response = await fetch(`https://parseapi.back4app.com/classes/coaches`, {
-      method:'POST',
+    const response = await fetch(`https://find-a-coach-4d753-default-rtdb.firebaseio.com/coaches/${userId}.json`, {
+      method:'PUT',
       body:JSON.stringify(coachData),
-      headers:{
-        'Content-Type': 'application/json',
-        'X-Parse-Application-Id': '63u3mbmETZ0kesrnNGo1XTas8yKa8HdbqYdbj2sf',
-        'X-Parse-REST-API-Key': 'oU9VIRLkWZlFbxozm4ZcY13n1tCOnQY2usqgaPSi',
-      }
     })
 
     const responseData = await response.json()
-
-    const userId = responseData.objectId
-    context.rootState.userId = userId;
-
-    console.log(userId)
-
+    console.log(responseData);
+    
     if(response.ok === false){
       //TODO
     }
