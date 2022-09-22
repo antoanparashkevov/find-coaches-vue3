@@ -17,7 +17,7 @@ export default {
 
     const responseData = await response.json()
     if(response.ok === false){
-      //TODO
+      throw new Error(responseData.message || 'Due to internal error, you can\t register as a coach!')
     }
     context.commit('registerCoach', responseData)
   },
