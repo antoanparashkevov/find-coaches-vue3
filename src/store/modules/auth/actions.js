@@ -17,6 +17,7 @@ export default {
       //TODO error handling
       throw new Error(responseData.message || 'Failed to authenticate. Please try again later!')
     }
+    //localId actually is userId
     context.commit('setAuthentication', {
       token: responseData.idToken,
       id: responseData.localId,

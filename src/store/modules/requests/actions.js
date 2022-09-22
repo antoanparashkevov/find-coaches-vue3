@@ -24,7 +24,8 @@ export default {
   },
   async loadRequests(context) {
     const userId = context.rootGetters['auth/userId'];
-    const response = await fetch(`https://find-a-coach-4d753-default-rtdb.firebaseio.com/requests/${userId}.json`)
+    const token = context.rootGetters['auth/token']
+    const response = await fetch(`https://find-a-coach-4d753-default-rtdb.firebaseio.com/requests/${userId}.json?auth=${token}`)
     const responseData = await response.json()
     
     //Error handling

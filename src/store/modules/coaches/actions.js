@@ -1,6 +1,7 @@
 export default {
   async registerCoach(context,payload){
-    const userId = context.rootState.userId;
+    const userId = context.rootGetters['auth/userId'];
+    const token = context.rootGetters['auth/token'];
     //payload is a data that is coming from a mutation
     //with context, we can commit this mutation
     const coachData = {
@@ -10,7 +11,7 @@ export default {
       description:payload.desc,
       hourlyRate:payload.rate,
     }
-    const response = await fetch(`https://find-a-coach-4d753-default-rtdb.firebaseio.com/coaches/${userId}.json`, {
+    const response = await fetch(`https://find-a-coach-4d753-default-rtdb.firebaseio.com/coaches/${userId}.json?auth=${token}`, {
       method:'PUT',
       body:JSON.stringify(coachData),
     })
