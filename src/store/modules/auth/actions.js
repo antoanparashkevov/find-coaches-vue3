@@ -1,6 +1,8 @@
 export default {
-  async signup(context,payload) {
-    const response = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyACNi0ZXvS3pT7HcDoYK4-v7O6dOhhGSZI', {
+  async auth(context,payload) {
+    const response = await fetch(
+      (payload.isLogin ? payload.loginAPI : payload.registerAPI)
+      + payload.apiKey, {
       method: "POST",
       body: JSON.stringify({
         email: payload.email,

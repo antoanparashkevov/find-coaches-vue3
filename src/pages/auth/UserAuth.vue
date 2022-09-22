@@ -29,6 +29,9 @@ export default {
   name: 'userAuth',
   data: ()=>{
     return {
+      loginAPI: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=',
+      registerAPI: 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=',
+      APIkey:'AIzaSyACNi0ZXvS3pT7HcDoYK4-v7O6dOhhGSZI',
       email: { 
         val: '',
         isValid: true
@@ -59,16 +62,24 @@ export default {
       if(this.formIsValid === false){
         return;
       }
-      const authData = {
-        email: this.email.val,
-        password: this.password.val
-      }
       this.isLoading = true;
       try{
         if(this.mode === 'login'){
-          //TODO http request for login
+          await this.$store.dispatch('auth/auth', { 
+            email: this.email.val,
+            password: this.password.val,
+            loginAPI: this.loginAPI,
+            apiKey:this.APIkey,
+            isLogin:true
+          })
         } else{
-          await this.$store.dispatch('auth/signup', authData)
+          await this.$store.dispatch('auth/auth', {
+            email: this.email.val,
+            password: this.password.val,
+            registerAPI: this.registerAPI,
+            apiKey: this.APIkey,
+            isLogin: false
+          })
         }
       }catch (error){
         this.error = (error.message || 'Due to internal server error, you can\t authenticate now!')
