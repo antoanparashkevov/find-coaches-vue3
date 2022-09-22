@@ -8,9 +8,9 @@
     </header>
     <div>
       <base-spinner v-if='isLoading'></base-spinner>
-      <ul v-else-if='hasRequests'>
+      <ul v-else-if='hasRequests && !isLoading'>
         <request-item v-for='req in requestsList'
-                      :key='req.coachId'
+                      :key='req.id'
                       :email='req.email'
                       :message='req.message'></request-item>
       </ul>
