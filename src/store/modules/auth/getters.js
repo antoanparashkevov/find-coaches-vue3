@@ -4,5 +4,8 @@ export default {
   },
   token(state){
     return state.idToken
+  },
+  isAuthenticated(state){
+    return !!state.idToken;
   }
 }

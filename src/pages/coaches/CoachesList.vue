@@ -9,7 +9,8 @@
     <section>
       <div class='controls'>
         <base-button mode='outline' @click='loadCoaches(true)'>Refresh</base-button>
-        <base-button link v-if='!isCoach && !isLoading' to='/register'>Register as a Coach</base-button>
+        <base-button link to='/auth' v-if='!isAuthenticated'>Login</base-button>
+        <base-button link v-if='isAuthenticated && !isCoach && !isLoading' to='/register'>Register as a Coach</base-button>
       </div>
       <div>
         <div v-if='isLoading'>
@@ -76,6 +77,9 @@ export default {
     this.loadCoaches(false)
   },
   computed: {
+    isAuthenticated(){
+      return this.$store.getters['auth/isAuthenticated'];
+    },
     isCoach(){
       return this.$store.getters['coaches/isCoach'];
     },

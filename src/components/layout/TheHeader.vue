@@ -9,7 +9,10 @@
           <router-link to='/coaches'>All Coaches</router-link>
         </li>
         <li>
-          <router-link to='/requests'>Requests</router-link>
+          <router-link v-if='isAuthenticated' to='/requests'>Requests</router-link>
+        </li>
+        <li>
+          <router-link v-if='!isAuthenticated' to='/auth'>Login</router-link>
         </li>
       </ul>
     </nav>
@@ -18,7 +21,12 @@
 
 <script>
 export default {
-  name: 'TheHeader'
+  name: 'TheHeader',
+  computed:{
+    isAuthenticated(){
+      return this.$store.getters['auth/isAuthenticated']
+    }
+  }
 };
 </script>
 
