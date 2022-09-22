@@ -13,8 +13,10 @@ export default {
     
     if(response.ok === false){
       console.log(responseData)
+      //TODO error handling
     }
     console.log(responseData)
+    
     context.commit('setAuthentication', {
       token: responseData.idToken,
       id: responseData.localId,

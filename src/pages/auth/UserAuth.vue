@@ -45,6 +45,7 @@ export default {
     },
     submitForm(){
       this.formIsValid = true;
+      this.validateForm()
       if(this.formIsValid === false){
         return;
       }
@@ -122,7 +123,8 @@ input:focus {
 }
 
 .error {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
+  color: red;
 }
 </style>
