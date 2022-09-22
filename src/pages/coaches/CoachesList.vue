@@ -17,8 +17,8 @@
         </div>
         <ul v-else-if='hasCoaches && !isLoading'>
           <coach-item v-for='coach in coaches'
-                      :key='coach.objectId'
-                      :id='coach.objectId'
+                      :key='coach.coachId'
+                      :id='coach.coachId'
                       :first-name='coach.firstName'
                       :last-name='coach.lastName'
                       :rate='coach.hourlyRate'
@@ -81,6 +81,7 @@ export default {
     },
     coaches() {
       const allCoaches = this.$store.getters['coaches/coaches'];//an array
+      console.log(allCoaches)
       //this will return new array with filtered coaches.
       return allCoaches.filter((coach) => {
         if (coach.areas.includes('frontend') && this.activeFilters.frontend) {
@@ -98,7 +99,6 @@ export default {
       
     }
   }
-
 };
 </script>
 
