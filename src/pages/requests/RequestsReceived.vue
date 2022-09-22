@@ -1,10 +1,14 @@
 <template>
+  <base-dialog :show='!!error' @close='handleError' title='Failed to fetch the requests'>
+    <p>{{error}}</p>
+  </base-dialog>
   <base-card>
     <header>
       <h2>Requests received</h2>
     </header>
     <div>
-      <ul v-if='hasRequests'>
+      <base-spinner v-if='isLoading'></base-spinner>
+      <ul v-else-if='hasRequests'>
         <request-item v-for='req in requestsList'
                       :key='req.coachId'
                       :email='req.email'
@@ -22,17 +26,32 @@ export default {
   components: {
     RequestItem
   },
+  data(){
+    return{
+      error:null,
+      isLoading: false
+    }
+  },
   computed: {
     requestsList() {
       return this.$store.getters['requests/requests'];
     },
     hasRequests() {
-      return this.$store.getters['requests/hasRequests'];
+      return !this.isLoading && this.$store.getters['requests/hasRequests'];
     }
   },
   methods:{
-    loadRequests(){
-      this.$store.dispatch('requests/loadRequests')
+    async loadRequests(){
+      this.isLoading = true;
+      try{
+      await this.$store.dispatch('requests/loadRequests')
+      }catch (error){
+        this.error = error;
+      }
+      this.isLoading = false;
+    },
+    handleError(){
+      this.error = null;
     }
   },
   created(){
