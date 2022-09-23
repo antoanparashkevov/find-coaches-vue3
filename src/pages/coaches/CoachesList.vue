@@ -9,7 +9,7 @@
     <section>
       <div class='controls'>
         <base-button mode='outline' @click='loadCoaches(true)'>Refresh</base-button>
-        <base-button link to='/auth' v-if='!isAuthenticated'>Login</base-button>
+        <base-button link to='/auth?redirect=register' v-if='!isAuthenticated'>Login to Register as coach</base-button>
         <base-button link v-if='isAuthenticated && !isCoach && !isLoading' to='/register'>Register as a Coach</base-button>
       </div>
       <div>

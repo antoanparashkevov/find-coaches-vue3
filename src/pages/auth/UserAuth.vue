@@ -81,7 +81,8 @@ export default {
             isLogin: false
           })
         }
-        this.$router.replace('/coaches')
+        const redirectLink = '/' + (this.$route.query.redirect || 'coaches')
+        this.$router.replace(redirectLink)
       }catch (error){
         this.error = (error.message || 'Due to internal server error, you can\t authenticate now!')
       }
