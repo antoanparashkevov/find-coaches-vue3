@@ -17,11 +17,22 @@ export default {
       //TODO error handling
       throw new Error(responseData.message || 'Failed to authenticate. Please try again later!')
     }
+    localStorage.setItem('token',responseData.idToken);
+    localStorage.setItem('userId',responseData.localId);
+    
     //localId actually is userId
     context.commit('setAuthentication', {
       token: responseData.idToken,
       id: responseData.localId,
       expires: responseData.expiresIn
+    })
+  },
+  autoLogin(context){
+    const token = localStorage.getItem('token')
+    const id = localStorage.getItem('userId')
+    context.commit('setAuthentication', {
+      token,
+      id
     })
   },
   logout(context){
