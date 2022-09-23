@@ -72,7 +72,6 @@ export default {
             apiKey:this.APIkey,
             isLogin:true
           })
-          this.$router.replace('/coaches')
         } else{
           await this.$store.dispatch('auth/auth', {
             email: this.email.val,
@@ -82,6 +81,7 @@ export default {
             isLogin: false
           })
         }
+        this.$router.replace('/coaches')
       }catch (error){
         this.error = (error.message || 'Due to internal server error, you can\t authenticate now!')
       }
