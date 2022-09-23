@@ -9,7 +9,7 @@ export default {
     return {
       userId:null,
       idToken:null,
-      expiresIn:null,
+      autoLogout: false
     }
   },
   mutations,
