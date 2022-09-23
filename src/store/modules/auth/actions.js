@@ -36,6 +36,8 @@ export default {
     })
   },
   logout(context){
+    localStorage.removeItem('token')
+    localStorage.removeItem('userId')
     context.commit('setAuthentication', {
       token: null,
       id: null,
