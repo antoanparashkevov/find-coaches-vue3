@@ -5,7 +5,7 @@ import requestModule from './modules/requests/index'
 import authModule from './modules/auth/index'
 
 const store = createStore({
-  modules:{
+  modules: {
     coaches:coachesModule,
     requests:requestModule,
     auth:authModule

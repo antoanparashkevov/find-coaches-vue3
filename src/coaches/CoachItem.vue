@@ -17,13 +17,13 @@ export default {
   props:['id','firstName','lastName','rate','areas'],
   computed:{
     fullName(){
-      return this.firstName + ' ' + this.lastName
+      return this.$props.firstName + ' ' + this.$props.lastName
     },
     contactCoachLink(){
-      return this.$route.path + '/' + this.id + '/contact'
+      return this.$route.path + '/' + this.$props.id + '/contact'
     },
     detailsCoachLink(){
-      return this.$route.path + '/' + this.id
+      return this.$route.path + '/' + this.$props.id
     }
   }
 };

@@ -93,8 +93,10 @@ export default {
         if (coach.areas.includes('backend') && this.activeFilters.backend) {
           return true;
         }
-        return coach.areas.includes('career') && this.activeFilters.career;
-
+        if (coach.areas.includes('career') && this.activeFilters.backend) {
+          return true;
+        }
+        return false;
       });
     },
     hasCoaches() {

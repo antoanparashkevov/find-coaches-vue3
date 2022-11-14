@@ -1,6 +1,6 @@
 export default {
   async registerCoach(context,payload){
-    const userId = context.rootGetters['auth/userId'];
+    const coachId = context.rootGetters['auth/userId'];
     const token = context.rootGetters['auth/token'];
     //payload is a data that is coming from a mutation
     //with context, we can commit this mutation
@@ -11,7 +11,7 @@ export default {
       description:payload.desc,
       hourlyRate:payload.rate,
     }
-    const response = await fetch(`https://find-a-coach-4d753-default-rtdb.firebaseio.com/coaches/${userId}.json?auth=${token}`, {
+    const response = await fetch(`https://find-a-coach-4d753-default-rtdb.firebaseio.com/coaches/${coachId}.json?auth=${token}`, {
       method:'PUT',
       body:JSON.stringify(coachData),
     })
@@ -20,7 +20,10 @@ export default {
     if(response.ok === false){
       throw new Error(responseData.message || 'Due to internal error, you can\t register as a coach!')
     }
-    context.commit('registerCoach', responseData)
+    context.commit('registerCoach', { 
+      ...responseData,
+      coachId
+    })
   },
   async loadCoaches(context, payload){
     //if these two properties are falsy
