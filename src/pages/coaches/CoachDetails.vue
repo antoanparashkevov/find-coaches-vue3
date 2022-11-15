@@ -2,14 +2,14 @@
   <div>
     <section>
       <base-card>
-        <h3>{{ fullName }}</h3>
-        <h4>${{ rate }}/hour</h4>
+        <h3>{{ getSelectedCoach.firstName }} {{getSelectedCoach.lastName}}</h3>
+        <h4>${{ getSelectedCoach.hourlyRate }}/hour</h4>
       </base-card>
     </section>
     <section>
       <base-card>
-        <base-badge v-for='area in areas' :key='area' :type='area' :title='area'></base-badge>
-        <p>{{description}}</p>
+        <base-badge v-for='area in getSelectedCoach.areas' :key='area' :type='area' :title='area'></base-badge>
+        <p>{{getSelectedCoach.description}}</p>
       </base-card>
     </section>
     <section>
@@ -29,37 +29,31 @@
 export default {
   name: 'CoachDetails',
   props: ['id'],
-  data() {
-    return {
-      selectedCoach: null,
-    };
-  },
   computed: {
-    rate(){
-      return this.selectedCoach.hourlyRate
-    },
-    areas(){
-      return this.selectedCoach.areas
-    },
-    description(){
-      return this.selectedCoach.description
-    },
-    fullName() {
-      return this.selectedCoach.firstName + ' ' + this.selectedCoach.lastName;
-    },
     contactCoachLink() {
       if(this.$route.path.includes('contact')){
         return this.$route.path
       }
       return this.$route.path + '/contact';
+    },
+    getSelectedCoach(){
+      const allCoaches = this.$store.getters['coaches/coaches']
+      return allCoaches
+        .find(coach=>coach.coachId === this.$props.id) || []
     }
   },
+  methods: {
+    async loadCoaches(refresh = true) {
+      try{
+        await this.$store.dispatch('coaches/loadCoaches', {forceRefresh: refresh})
+      }
+      catch (error){
+        this.error = error;
+      }
+    },
+  },
   created() {
-    // this.selectedCoach = this.$store.getters['coaches/coaches']
-    //   .find(
-    //     (coach) => coach.coachId === this.id
-    //   );
-    this.selectedCoach = this.$store.state.coaches[0]
+    this.loadCoaches(true)
   }
 };
 </script>
