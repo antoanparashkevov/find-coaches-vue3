@@ -1,4 +1,5 @@
 <template>
+  <div>
   <base-dialog :show='!!error' title='We have an internal server problem!' @close='handleError'>
     <p>{{error}}</p>
     <template v-slot:actions>
@@ -12,6 +13,7 @@
      <coach-form @save-data='saveData'></coach-form>
    </base-card>
   </section>
+  </div>
 </template>
 
 <script>

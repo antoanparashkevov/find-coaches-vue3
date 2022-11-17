@@ -1,4 +1,5 @@
 <template>
+  <div>
   <base-dialog :show='!!error' @close='handleError' title='Failed to fetch the requests'>
     <p>{{error}}</p>
   </base-dialog>
@@ -17,6 +18,7 @@
       <h3 v-else>You don't have any received requests!</h3>
     </div>
   </base-card>
+  </div>
 </template>
 
 <script>

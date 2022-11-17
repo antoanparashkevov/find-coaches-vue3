@@ -6,21 +6,21 @@
     <base-dialog fixed :show='isLoading' title='Loading...'>
       <base-spinner></base-spinner>
     </base-dialog>
-  <base-card>
-    <form @submit.prevent='submitForm'>
-      <div class='form-control' :class='{invalid:email.isValid === false}'>
-        <label for='email'>E-mail</label>
-        <input type='email' id='email' v-model.trim='email.val'>
-      </div>
-      <div class='form-control' :class='{invalid:password.isValid === false}'>
-        <label for='password'>Password</label>
-        <input type='password' id='password' v-model.trim='password.val'>
-      </div>
-      <p class='error' v-if='formIsValid === false'>Please enter a valid credentials</p>
-      <base-button>{{ submitButtonCaption }}</base-button>
-      <base-button type='button' mode='flat' @click='switchAuthMode'>{{ switchModeCaption }}</base-button>
-    </form>
-  </base-card>
+    <base-card>
+      <form @submit.prevent='submitForm'>
+        <div class='form-control' :class='{invalid:email.isValid === false}'>
+          <label for='email'>E-mail</label>
+          <input type='email' id='email' v-model.trim='email.val'>
+        </div>
+        <div class='form-control' :class='{invalid:password.isValid === false}'>
+          <label for='password'>Password</label>
+          <input type='password' id='password' v-model.trim='password.val'>
+        </div>
+        <p class='error' v-if='formIsValid === false'>Please enter a valid credentials</p>
+          <base-button>{{ submitButtonCaption }}</base-button>
+          <base-button type='button' mode='flat' @click='switchAuthMode'>{{ switchModeCaption }}</base-button>
+      </form>
+    </base-card>
   </div>
 </template>
 

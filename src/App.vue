@@ -3,7 +3,13 @@
   <the-header></the-header>
 </section>
   <section>
-    <router-view></router-view>
+    <router-view v-slot='slotProps'>
+<!--      mode=out-in -> so first to animate the removal then the newly added route-->
+      <transition name='route' mode='out-in'>
+<!--        slotProps.Component will point at the component the router wants to load-->
+        <component :is='slotProps.Component'></component>
+      </transition>
+    </router-view>
   </section>
 </template>
 
@@ -45,6 +51,30 @@ html{
 
 body{
   margin:0;
+}
+
+.route-enter-from {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.route-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.route-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.route-leave-active {
+  transition: all 0.3s ease-in;
+}
+
+.route-leave-from,
+.route-enter-to {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 </style>
