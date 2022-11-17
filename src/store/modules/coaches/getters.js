@@ -2,11 +2,16 @@ export default {
   coaches(state){
     return state.coaches;
   },
+  selectedCoach(state) {
+    return state.selectedCoach
+  },
   //predicate func
   hasCoaches(state){
     return state.coaches && state.coaches.length > 0;
   },
-  
+  hasCoach(state) {
+    return state.selectedCoach && Object.keys(state.selectedCoach).length > 0
+  },
   isCoach(_,getters,_2,rootGetters){
     const coaches = getters.coaches;
     const userId = rootGetters['auth/userId'];

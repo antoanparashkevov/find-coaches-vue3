@@ -1,5 +1,5 @@
 <template>
-  <div v-if='hasCoaches'>
+  <div v-if='hasCoach'>
     <section>
       <base-card>
         <h3>{{ getSelectedCoach.firstName }} {{getSelectedCoach.lastName}}</h3>
@@ -29,9 +29,14 @@
 export default {
   name: 'CoachDetails',
   props: ['id'],
+  data: function() {
+    return {
+      error: null  
+    }
+  },
   computed: {
-    hasCoaches() {
-      return this.$store.getters['coaches/hasCoaches']
+    hasCoach() {
+      return this.$store.getters['coaches/hasCoach']
     },
     contactCoachLink() {
       if(this.$route.path.includes('contact')){
@@ -39,24 +44,21 @@ export default {
       }
       return this.$route.path + '/contact';
     },
-    getSelectedCoach(){
-      const allCoaches = this.$store.getters['coaches/coaches']
-      return allCoaches
-        .find(coach=>coach.coachId === this.$props.id)
+    getSelectedCoach() {
+        return this.$store.getters['coaches/selectedCoach']
     }
   },
   methods: {
-    async loadCoaches(refresh = true) {
-      try{
-        await this.$store.dispatch('coaches/loadCoaches', {forceRefresh: refresh})
+    async loadIndividualCoach() {
+      try {
+        await this.$store.dispatch('coaches/loadIndividualCoach',{coachId: this.$props.id})
+      } catch (err) {
+        this.error = err;
       }
-      catch (error){
-        this.error = error;
-      }
-    },
+    }
   },
   created() {
-    this.loadCoaches(true)
+    this.loadIndividualCoach()
   }
 };
 </script>

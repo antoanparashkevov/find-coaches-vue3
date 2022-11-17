@@ -8,5 +8,8 @@ export default {
   },
   setLastTimestamp(state){
     state.lastFetch = new Date().getTime()
+  },
+  loadIndividualCoach(state,payload) {
+    state.selectedCoach = payload
   }
 }

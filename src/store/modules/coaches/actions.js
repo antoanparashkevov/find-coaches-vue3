@@ -25,6 +25,18 @@ export default {
       coachId
     })
   },
+  async loadIndividualCoach(context,payload) {
+    const response = await fetch(`https://find-a-coach-4d753-default-rtdb.firebaseio.com/coaches/${payload.coachId}.json`,
+      { method: 'GET' })
+    
+    const responseData = await response.json();
+    if(response.ok === false) {
+      throw new Error(responseData.message || 'Due to internal error, you can\t see this coach details information')
+    }
+    
+    context.commit('loadIndividualCoach', responseData)
+    
+  },
   async loadCoaches(context, payload){
     //if these two properties are falsy
     if(!payload.forceRefresh && !context.getters.shouldUpdate){
