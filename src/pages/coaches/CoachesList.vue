@@ -15,7 +15,7 @@
       </div>
       <div>
         <div v-if='isLoading'>
-          <base-spinner></base-spinner>
+          <base-spinner/>
         </div>
         <ul v-else-if='hasCoaches && !isLoading'>
           <coach-item v-for='coach in coaches'
