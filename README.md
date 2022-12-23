@@ -61,29 +61,14 @@ Find a Freelancer is a web application that allows users to look for the right f
     - base components (shared components among the application)
 # <p id="application-pictures">Application Pictures</p>
 
+
 ## Desktop
-![home](https://user-images.githubusercontent.com/80749603/209162217-c8db6c13-9e07-4c76-ba76-7c13fac0504b.png)
+![home](https://user-images.githubusercontent.com/80749603/209372584-924981fb-67ee-4ca2-bdd8-61a5a81630e0.png)
 
-![details](https://user-images.githubusercontent.com/80749603/209162287-f1f9025f-bf33-48ae-ac65-b8b343223fe3.png)
+![details](https://user-images.githubusercontent.com/80749603/209372625-b8f6b745-af37-49d6-9635-b802c12ce8c6.png)
 
-![contact](https://user-images.githubusercontent.com/80749603/209162346-a125e676-216d-4d06-9262-69033b74727b.png)
+![contact](https://user-images.githubusercontent.com/80749603/209372744-1ae00530-3ad0-472e-ae21-5c274b4ea9b1.png)
 
-![proposals](https://user-images.githubusercontent.com/80749603/209162635-dc7150d0-6f73-4752-98b8-3c29857c535a.png)
+![register](https://user-images.githubusercontent.com/80749603/209372793-1c29f7d6-3c4a-4af4-87b9-c80e35229570.png)
 
-![auth](https://user-images.githubusercontent.com/80749603/209162403-6fc55a1e-69bd-4477-a0c8-4c4b3bd46b6f.png)
-
-![profile](https://user-images.githubusercontent.com/80749603/209162483-82fb32e3-2bb6-447e-b58f-c3b7c3b7c8db.png)
-
-![edit](https://user-images.githubusercontent.com/80749603/209162550-778fc8af-5baf-4a8a-97ac-0b6814c8c3f4.png)
-
-## Mobile
-
-![home_m](https://user-images.githubusercontent.com/80749603/209163166-d64e6407-b6de-4af3-b46b-3f6d68076ab0.png)
-
-![home_m_nav](https://user-images.githubusercontent.com/80749603/209163234-c7c21c50-b9d2-45a3-9d3a-c0147fb7b184.png)
-
-![profile_m](https://user-images.githubusercontent.com/80749603/209163337-2da2bbf8-92e1-4563-8314-dc6ba61694c2.png)
-
-![proposals_m](https://user-images.githubusercontent.com/80749603/209163420-58c417e5-fca0-4fdf-bc9d-1a65f494b337.png)
-
-![delete_m](https://user-images.githubusercontent.com/80749603/209163502-90620c87-03e0-49db-ba0b-89c0ad218ebb.png)
+![requests](https://user-images.githubusercontent.com/80749603/209372837-6bf7fbd6-389d-44e4-b653-bf700c8da3f3.png)
